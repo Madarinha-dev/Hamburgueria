@@ -699,7 +699,7 @@
         const funcionamento = document.getElementById('date-span')
         const capa_dia = document.getElementById('capa')
 
-
+        let total = 0;
         let cart = [];
 
         cartBtn.addEventListener('click', function(){
@@ -785,7 +785,7 @@
             })
         
 
-            cartTotal.textContent = total;
+            cartTotal.textContent = total.toFixed(2);
             cartCounter.innerHTML = quantidade;
             // cartCounter.textContent = quantidade;
         }
@@ -834,7 +834,8 @@
             }else{
                 addressWarn.style.display = "none";
                 addressInput.style.borderColor = "black";
-
+            
+                alert('oi')
                 const cartItems = cart.map((item) => {
                 return (
                     `
@@ -844,37 +845,31 @@
                     `
                 )
             }).join("")
-            
-            const message = encodeURIComponent(cartItems)
-            const phone = "81988830927"
-            let total = 0
 
-            cart.forEach(item => {
-                total += item.quantity*item.price
+            let p = 0 
+            cart.forEach(registro => {
+                p += registro.price
+                
             })
 
-            // alert(cartItems)
+            alert(cartItems)
+            const n = "5581988830927"
+            const m = `${cartItems} Total: ${p.toFixed(2)}`
+            const url = `https://wa.me/${n}?text=${encodeURIComponent(m)}`;
+            window.open(url, "_blank")
+            let total = 0
             // calcular o frete e colocar na mensagem, um teste
-
-            const numeroTelefone = "5581988830927"; // Substitua pelo número desejado
-            const mensagem = "Olá! Gostaria de mais informações."; // Sua mensagem aqui
-            const url = `https://wa.me/${numeroTelefone}?text=${encodeURIComponent(mensagem)}`;
-            window.open(url, "_blank");
-
-
-
-
-
-            // window.open(`https:/wa.me/${phone}?text=${message} Endereço: ${addressInput.value} Total: R$${total} Frete: R$..`, "_blank")
-            // window.open("https://www.google.com", "_blank");
             cart = []
             updateCartModal();
             addressInput.value = "";
+            p = 0
             }
 
             // Enviar o pedido para API ZAP
             
         })
+
+        
 
 
         // Verificar a hora e manipular o card horário
@@ -889,9 +884,9 @@
 
 
         const data = new Date();
-        const hora = data.getHours();
+        // const hora = data.getHours();
 
-        // const hora = 23
+        const hora = 20
         if (hora >= 18 && hora < 22){
             // alert("aberto")
             funcionamento.style.backgroundColor = "rgb(0, 176, 64)";
