@@ -835,11 +835,11 @@
                 addressWarn.style.display = "none";
                 addressInput.style.borderColor = "black";
             
-                alert('oi')
+                // alert('oi')
                 const cartItems = cart.map((item) => {
                 return (
                     `
-                    <>
+
                     0${item.quantity} ${item.name}  
                     Preço: R$${item.price}
                     `
@@ -852,9 +852,9 @@
                 
             })
 
-            alert(cartItems)
+            // alert(cartItems)
             const n = "5581988830927"
-            const m = `${cartItems} Total: ${p.toFixed(2)}`
+            const m = `${cartItems}Total: ${p.toFixed(2)}`
             const url = `https://wa.me/${n}?text=${encodeURIComponent(m)}`;
             window.open(url, "_blank")
             let total = 0
