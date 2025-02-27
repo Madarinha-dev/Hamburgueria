@@ -838,11 +838,10 @@
                 // alert('oi')
                 const cartItems = cart.map((item) => {
                 return (
-                    `
+                    `0${item.quantity} ${item.name}  
+Preço: R$${item.price}
 
-                    0${item.quantity} ${item.name}  
-                    Preço: R$${item.price}
-                    `
+`
                 )
             }).join("")
 
@@ -852,11 +851,39 @@
                 
             })
 
+            // marcar o tempo em que o pedido foi emitido
+            const data = new Date();
+            const hora = data.getHours();
+            const minuto = data.getMinutes();
+
+            if (hora>=10 && minuto>=10){
+                h = `${hora}:${minuto}`
+            }else if(hora>=10 && minuto<10){
+                h = `${hora}:0${minuto}`
+            }else if(hora<10 && minuto>10){
+                h = `0${hora}:${minuto}`
+            }else if(hora<10 && minuto<10){
+                h = `0${hora}:0${minuto}`
+            }
+
+            //Calcular o frete = (metro(distânci) * 0,01)
+            
+            
+
             // alert(cartItems)
             const n = "5581988830927"
-            const m = `${cartItems}Total: ${p.toFixed(2)}`
+            const m = 
+            `Hora: ${h}
+Endereço: ${addressInput.value}
+Frete: R$x
+
+Pedido: 
+${cartItems}
+Total: ${p.toFixed(2)}`
+
             const url = `https://wa.me/${n}?text=${encodeURIComponent(m)}`;
-            window.open(url, "_blank")
+            // window.open(url, "_blank")
+            alert(m)
             let total = 0
             // calcular o frete e colocar na mensagem, um teste
             cart = []
