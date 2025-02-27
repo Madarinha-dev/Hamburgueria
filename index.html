@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- METAS TAGS, Diga de ouro -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Dev Burger - O melhor hamburguer dev!P"/>
+    <meta property="og:image" content=""/>
+    <meta property="og:descrition" content="O melhor hamburguer caseiro de verdade"/>
+
+    <!-- valor do site 400 reais -->
+<!-- Quadro de anotações -->
+<!-- trocar o fundo do cardápio, para o de rildo -->
+<!-- trocar os produtos, pelo que ta no cardápio de rildo -->
+<!-- olhar com um olhar crítico e detalhado do cardápio de rildo, para adaptar a esse modelo -->
+
+     <style>
+        body{
+            background-color: #F6F7F8;
+            margin: 0;
+        }
+
+        img.bolinha{
+            width: 128px;
+            height: 128px;
+            border-radius: 100%;
+            box-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); 
+        }
+
+        img.bolinha:hover{
+            width: 140px;
+            height: 140px;
+            transition-duration: 0.5s;
+        }
+
+        h1.titulo{
+            font-size: 30px;
+            line-height: 36px;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color:white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            
+        }
+
+        span.endereco{
+            color:white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 500;
+        }
+
+        div.div{
+            text-align: center;
+            /* background-color: red; */
+            padding-top: 90px;
+        }
+
+        div.caixa-de-horario{
+            background-color: rgb(0, 176, 64);
+            width:160px;
+            height: 20px;
+            padding: 2px;
+            margin: auto;
+            margin-top: 10px;
+            border-radius: 20px;
+        }
+
+        header.fundo{
+            width: 100%;
+            height: 420px;
+            background-image: url('assets/bg.png');
+            background-position: center;
+        }
+
+        h2.menu{
+            font-size: 25px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            h2.menu {
+                /* color: red; */
+                font-size: 18px;
+            }
+        }
+
+        /* @media (max-width: 100px) {} estilos para telas menores que 100px */
+
+        img.produto{
+            width: 100px;
+            height: 100px;
+            border-radius: 15px;
+            margin-right: 10px;
+            margin-left: 5px;
+            
+        }
+
+        img.produto:hover{
+            width: 110px;
+            height: 110px;
+            transition-duration: 0.5s;
+            transform: rotate(-5deg);
+        }
+
+        main.main{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 720px){
+            main.main{
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+        }
+
+        div.conf-bebidas{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: red;
+        }
+
+        @media (max-width: 720) {
+            div.conf-bebidas{
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+        }
+
+        div.bebidas{
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 8px;
+            padding-right: 8px;
+            background-color: green;
+        }
+
+        div.modal{
+            background-color: rgb(0 0 0 / 0.5);
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top:0;
+            left: 0;
+            z-index:9; 
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div.modal-interno{
+            background-color: white;
+            border-radius: 8px;
+            width: 360px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+        }
+
+        @media (max-width: 520px) {
+            div.modal-interno{
+                width: 360px;
+            }
+        }
+
+        div.modal-interno > h2 {
+            font-size:18px;
+            padding-left: 10px;
+            display: flex;
+            justify-content: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 900;
+        }
+
+        div.itens-do-carrinho{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+
+        }
+
+        input#caixa{
+            width: 380px;
+            padding: 3px;
+            border-radius: 4px;
+            margin-bottom:10px;
+        }
+
+     </style>
+
+    <title>Dev Hamburgue</title>
+</head>
+
+<body>
+
+<!-- HEADE -->
+ <header class="fundo">
+    <div class="div">
+        <img class="bolinha" src="assets/hamb-1.png" alt="Logo devBurduer">
+
+        <h1 class="titulo">Dev Burguer</h1>
+
+        <span class="endereco">
+            Rua dev 10, Campo Grande - MG
+        </span>
+
+        <div class="caixa-de-horario" id="date-span">
+            <span style="color:white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Seg á - 18:00 as 22:00</span>
+        </div>
+
+    </div>
+ </header>
+<!-- FIM HEADER-->
+
+
+<!-- INTERVALO -->
+ <h2 class="menu">Conheça o nosso cardápio</h2>
+<!-- INTERVALO -->
+
+
+<!-- MENU -->
+    <div id="menu">
+        <main class="main">
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/hamb-1.png" alt="hamburguer 01">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Hamburguer smash</p>
+                    <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p>
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$19,90</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Hamburguer Smash"
+                        data-price="19.90">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/hamb-2.png" alt="hamburguer 02">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Hamburguer Duplo</p>
+                    <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p>
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$32,90</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Hamburgue Duplo"
+                        data-price="32.90">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/hamb-3.png" alt="hamburguer 03">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Hamburguer Salad</p>
+                    <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p>
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$35,90</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Hamburgue Salad"
+                        data-price="35.90">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/hamb-4.png" alt="hamburguer 04">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Hamburguer da Casa</p>
+                    <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p>
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$30,00</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Hamburgue da Casa"
+                        data-price="30.00">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/hamb-5.png" alt="hamburguer 05">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Hamburguer Duplo da Casa</p>
+                    <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p>
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$39,00</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Hamburgue Duplo da Casa"
+                        data-price="39.00">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/hamb-6.png" alt="hamburguer 06">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Hamburguer de Combo</p>
+                    <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p>
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$32,00</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Hamburguer de Combo"
+                        data-price="32.00">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/hamb-7.png" alt="hamburguer 07">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Hamburguer Aggressive</p>
+                    <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p>
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$35,00</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Hamburguer Aggressive"
+                        data-price="35.00">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/hamb-8.png" alt="hamburguer 08">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Hamburguer vegan</p>
+                    <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p>
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$27,00</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Hamburguer vegan"
+                        data-price="27">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+
+
+            <div style="grid-template-columns: 1fr;">
+
+                <p style="font-weight: 900;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-size: 25px;
+                padding-left: 3%;
+                display: flexbox;">Bebidas</p>
+        
+            </div>
+
+            <div style="grid-template-columns: 1fr;">
+
+                <p style="font-weight: 900;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-size: 1px;
+                padding-left: 3%;
+                display: flexbox;">.</p>
+        
+            </div>
+
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/refri-2.png" alt="Refri 02">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Guaraná Lata</p>
+                    <!-- <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p> -->
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Guarana Lata"
+                        data-price="6">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/refri-2.png" alt="Refri 02">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Guaraná Lata</p>
+                    <!-- <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p> -->
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Guarana Lata"
+                        data-price="6">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/refri-2.png" alt="Refri 02">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Guaraná Lata</p>
+                    <!-- <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p> -->
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Guarana Lata"
+                        data-price="6">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/refri-1.png" alt="Refri 01">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Coca Lata</p>
+                    <!-- <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p> -->
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Coca Lata"
+                        data-price="6">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/refri-1.png" alt="Refri 01">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Coca Lata</p>
+                    <!-- <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p> -->
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Coca Lata"
+                        data-price="6">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/refri-2.png" alt="Refri 02">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Guaraná Lata</p>
+                    <!-- <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p> -->
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Guarana Lata"
+                        data-price="6">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/refri-1.png" alt="Refri 01">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Coca Lata</p>
+                    <!-- <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p> -->
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Coca Lata"
+                        data-price="6">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+
+            <!-- PRODUTOS -->
+            <div style="display:flex ;">
+                <img class="produto" src="assets/refri-2.png" alt="Refri 02">
+                <div>
+                    <p style="font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -10px;">Guaraná Lata</p>
+                    <!-- <p style="font-size: 14px; line-height: 12px;">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p> -->
+
+                    <div style="display: flex; align-items: center; gap: 8px; justify-content: space-between; margin-top: -10px;">
+                        <p style="font-weight: 900;
+                         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
+    
+                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        
+                        data-name="Guarana Lata"
+                        data-price="6">
+                        <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
+                            ADD
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DE PRODUTOS -->
+        </main>
+    </div>
+
+
+
+
+    <div class="modal" id="cart-modal" style="display: none;">
+        <div class="modal-interno">
+            <h2>Meu Carrinho </h2>
+            
+            <div id="cart-items" class="itens-do-carrinho"></div>
+            <p style="font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Total: R$<span id="cart-total">0.00</span></p>
+            <!-- Pro de Rildo a gente também vai precisar pegar o endereço e calcular a distância e calcular o frete e jogar no valor total -->
+
+            <p style="font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Endereço de Entrega: </p>
+            <input id="caixa" style="width: 340px; padding: 3px; border-radius: 4px; margin-bottom:10px;" type="tel" name="address" id="address" placeholder="Digite o seu Endereço Completo">
+
+            <p id="address-warn"  style="margin-top: 2px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(221, 5, 5);
+            display: none;">Digite seu endereço completo!</p>
+
+            <div style="display: flex; justify-content: space-between;">
+                <button id="close-modal-btn" style="border: none; background-color: white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Fechar</button>
+                <button id="checkout-btn" style="border:none; background-color: #35E08E; padding: 6px; border-radius: 4px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                color:rgb(41, 41, 41); margin-right:10px;">Finaliza Pedido</button>
+            </div>
+
+        </div>
+    </div>
+<!-- MODAL CART -->
+
+
+<!-- FIM MODAL CART -->
+<br>
+<br>
+    <footer style="background-color: rgb(251, 87, 87);width: 100%; padding-top: 10px; padding-bottom: 10px; position: fixed; left: 0; bottom:0;
+    display: flex; justify-content: center;">
+        <div id="cart-btn" style="font-weight: 900; color: white;">
+            (<span id="cart-count">0</span>)
+            Veja meu Carrinho
+        </div>
+    </footer>
+
+
+
+    <div id="capa" style="z-index: 9999; background-color: rgba(0, 0, 0, 0.5); width: 100%; height: 100%; position: fixed; top: 0; display: none;
+    align-items: center; justify-content: center;">
+        <div style="">
+            <img style="width: 300px; height: 300px;" src="assets/fechado.JPG" alt="">
+        </div>
+    </div>
+
+
+
+
+
+
+    <script>
+        
+        // fazer a manipulação do DOM, a arvore para acessar os arquivos
+        const menu = document.getElementById('menu')
+        const cartBtn = document.getElementById('cart-btn')
+        const cartModal = document.getElementById('cart-modal')
+        const cartItemsContainer = document.getElementById('cart-items')
+        const cartTotal = document.getElementById('cart-total')
+        const checkoutBtn = document.getElementById('checkout-btn')
+        const closeModalBtn = document.getElementById('close-modal-btn')
+        const cartCounter = document.getElementById('cart-count')
+        const addressInput = document.getElementById('caixa')
+        const addressWarn = document.getElementById('address-warn')
+        const funcionamento = document.getElementById('date-span')
+        const capa_dia = document.getElementById('capa')
+
+
+        let cart = [];
+
+        cartBtn.addEventListener('click', function(){
+            cartModal.style.display = "flex"
+            updateCartModal()
+        })
+
+
+        cartModal.addEventListener('click', function(event) {
+            if (event.target === cartModal ) {
+                cartModal.style.display = "none"
+            }
+        })
+
+        closeModalBtn.addEventListener('click', function() {
+            cartModal.style.display = "none"
+        })
+
+        menu.addEventListener('click', function(event) {
+            // console.log(event.target)
+            let parentButton = event.target.closest('.add-to-cart-btn')
+
+            if (parentButton) {
+                const name = parentButton.getAttribute('data-name')
+                const price = parseFloat(parentButton.getAttribute('data-price'))
+                addToCart(name, price)
+            }
+        })
+
+        // Função para adicionar no carrinho
+        function addToCart(name, price){
+            const existingItem = cart.find(item => item.name === name)
+            if (existingItem) {
+                existingItem.quantity += 1
+            }else{
+                cart.push({
+                    name,
+                    price,
+                    quantity: 1,
+                })
+            }
+            updateCartModal()
+        }
+
+        // atualiza o carrinho
+        function updateCartModal(){
+            cartItemsContainer.innerHTML = "";
+            let total = 0;
+            let quantidade = 0;
+
+            cart.forEach(item => {
+                const cartItemElement = document.createElement('div');
+                cartItemElement.classList.add("flex", "justify-between", "flex-col", "mb-4")
+
+                cartItemElement.innerHTML = `
+                <div style="display: flex; justify-content: space-between; style="margin-bottom: -20px;">
+
+                    <div style="width: 230px;">
+                        <p style="font-weight: 1; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Nome: ${item.name}</p>
+                        <p style="margin-top: -10px;">Qtd: ${item.quantity}</p>
+                        <p style="margin-top: -10px;">R$: ${item.price}</p>
+                    </div>
+
+                    <div style="width: 75px; padding-top: 40px;">
+                        <button class="remove-from-cart-btn" data-name="${item.name}" style="border: none; background-color: rgba(255, 255, 255, 0); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 15px;">
+                            Remover
+                        </button>
+                    </div>
+
+                </div>
+                `
+                // Junto do total, fazer o calculo de frete (usando a API do google)
+                // os juros se for cartão. (cartão de crédito/debito)
+                total += item.price*item.quantity
+                // cartTotal.innerHTML = `R$${total.toFixed(2)}`
+
+                quantidade += item.quantity
+                // cartCounter.innerHTML =`${quantidade}`
+
+
+                cartItemsContainer.appendChild(cartItemElement)
+                
+            })
+        
+
+            cartTotal.textContent = total;
+            cartCounter.innerHTML = quantidade;
+            // cartCounter.textContent = quantidade;
+        }
+        
+
+        // FUNÇÃO PARA REMOVER DO CARRINHO
+        cartItemsContainer.addEventListener("click", function(event){
+            if(event.target.classList.contains('remove-from-cart-btn')){
+                const name = event.target.getAttribute("data-name")
+                removeItemCart(name)
+            }
+        })
+
+
+        function removeItemCart(name){
+            const index = cart.findIndex(item => item.name === name);
+
+            if(index != -1){
+                const item = cart[index];
+
+                if(item.quantity > 1){
+                    item.quantity -= 1;
+                    updateCartModal();
+                    return;
+                }
+                cart.splice(index, 1);
+                updateCartModal();
+            }
+        }
+
+        addressInput.addEventListener('input', function(event){
+            let inputValue = event.target.value;
+        })
+
+        checkoutBtn.addEventListener('click',function(){
+            // alert('Mostrando o que foi Digitado: '+addressInput.value)
+            if(cart.length === 0){
+                addressInput.style.borderColor = "black";
+                addressWarn.style.display = "none";
+                return;
+            }
+
+            if(addressInput.value === ""){
+                addressWarn.style.display = "flex";
+                addressInput.style.borderColor = "red"
+            }else{
+                addressWarn.style.display = "none";
+                addressInput.style.borderColor = "black";
+
+                const cartItems = cart.map((item) => {
+                return (
+                    `
+                    <>
+                    0${item.quantity} ${item.name}  
+                    Preço: R$${item.price}
+                    `
+                )
+            }).join("")
+            
+            const message = encodeURIComponent(cartItems)
+            const phone = "81988830927"
+            let total = 0
+
+            cart.forEach(item => {
+                total += item.quantity*item.price
+            })
+
+            // alert(cartItems)
+            // calcular o frete e colocar na mensagem
+
+            window.open(`https:/wa.me/${phone}?text=${message} Endereço: ${addressInput.value} Total: R$${total} Frete: R$..`, "_blank")
+            cart = []
+            updateCartModal();
+            addressInput.value = "";
+            }
+
+            // Enviar o pedido para API ZAP
+            
+        })
+
+
+        // Verificar a hora e manipular o card horário
+        function checkRestaurantOpen(){
+            const data = new Date();
+            const hora = data.getHours();
+            return hora >= 18 && hora < 22;
+            // true = restaurante está aberto
+
+        }
+
+
+
+        const data = new Date();
+        const hora = data.getHours();
+
+        // const hora = 23
+        if (hora >= 18 && hora < 22){
+            // alert("aberto")
+            funcionamento.style.backgroundColor = "rgb(0, 176, 64)";
+            capa_dia.style.display = "none"
+        }else{
+            funcionamento.style.backgroundColor = "red";
+            capa_dia.style.display = "flex"
+            // alert('fechado')
+        }
+        // alert(hora);
+
+    </script>
+</body>
+</html>
+
+
+<!-- 1:06:01 / 1:34:02 -->
