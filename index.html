@@ -199,6 +199,17 @@
             margin-bottom:10px;
         }
 
+        .add-to-cart-btn{
+            /* transition: transform 0.1s ease-in-out; */
+            transition: 0.1s ease-in-out;
+        }
+
+        .pressionado {
+            transform: translateY(2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            background-color: #00BD3D;
+        }
+
      </style>
 
     <title>Dev Hamburgue</title>
@@ -246,11 +257,22 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$19,90</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button 
+                        style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);" 
+
+                        class="add-to-cart-btn" 
                         data-name="Hamburguer Smash"
-                        data-price="19.90">
+                        data-price="19.90"
+                        onclick="efeito()">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -269,12 +291,21 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$32,90</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button
+                        style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);" 
+                        class="add-to-cart-btn" 
                         
                         data-name="Hamburgue Duplo"
                         data-price="32.90">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -292,12 +323,20 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$35,90</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button 
+                        style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);" class="add-to-cart-btn" 
                         
                         data-name="Hamburgue Salad"
                         data-price="35.90">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -315,12 +354,20 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$30,00</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);"
+                         class="add-to-cart-btn" 
                         
                         data-name="Hamburgue da Casa"
                         data-price="30.00">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -338,12 +385,19 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$39,00</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);" class="add-to-cart-btn" 
                         
                         data-name="Hamburgue Duplo da Casa"
                         data-price="39.00">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -361,12 +415,19 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$32,00</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);" class="add-to-cart-btn" 
                         
                         data-name="Hamburguer de Combo"
                         data-price="32.00">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -384,12 +445,19 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$35,00</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);" class="add-to-cart-btn" 
                         
                         data-name="Hamburguer Aggressive"
                         data-price="35.00">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -408,12 +476,19 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$27,00</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);" class="add-to-cart-btn" 
                         
                         data-name="Hamburguer vegan"
                         data-price="27">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -453,12 +528,19 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);" class="add-to-cart-btn" 
                         
                         data-name="Guarana Lata"
                         data-price="6">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -476,12 +558,19 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);" class="add-to-cart-btn" 
                         
                         data-name="Guarana Lata"
                         data-price="6">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -499,12 +588,19 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);" class="add-to-cart-btn" 
                         
                         data-name="Guarana Lata"
                         data-price="6">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -522,12 +618,19 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);" class="add-to-cart-btn" 
                         
                         data-name="Coca Lata"
                         data-price="6">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -545,12 +648,19 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);" class="add-to-cart-btn" 
                         
                         data-name="Coca Lata"
                         data-price="6">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -568,12 +678,19 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);" class="add-to-cart-btn" 
                         
                         data-name="Guarana Lata"
                         data-price="6">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -591,12 +708,19 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);" class="add-to-cart-btn" 
                         
                         data-name="Coca Lata"
                         data-price="6">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -614,12 +738,19 @@
                         <p style="font-weight: 900;
                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">R$6,00</p>
     
-                        <button style="background-color: rgb(72, 72, 72); color: white; width: 40px; height: 20px;" class="add-to-cart-btn" 
+                        <button style="background-color: red;
+                        color: white;
+                        margin-right: 9px;
+                        width: 45px;
+                        height: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.338);" class="add-to-cart-btn" 
                         
                         data-name="Guarana Lata"
                         data-price="6">
                         <!-- data = ta sendo para identificar e pegar essas informações no Javascript -->
-                            ADD
+                            +
                         </button>
                     </div>
                 </div>
@@ -636,10 +767,10 @@
             <h2>Meu Carrinho </h2>
             
             <div id="cart-items" class="itens-do-carrinho"></div>
-            <p style="font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Total: R$<span id="cart-total">0.00</span></p>
+            <p style="font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -15px;">Total: R$<span id="cart-total">0.00</span></p>
             <!-- Pro de Rildo a gente também vai precisar pegar o endereço e calcular a distância e calcular o frete e jogar no valor total -->
 
-            <p style="font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Endereço de Entrega: </p>
+            <p style="font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -0.4px;">Endereço de Entrega: </p>
             <input id="caixa" style="width: 340px; padding: 3px; border-radius: 4px; margin-bottom:10px;" type="text" name="address" id="address" placeholder="Digite o seu Endereço Completo">
 
             <p id="address-warn"  style="margin-top: 2px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -772,7 +903,7 @@
                 cartItemElement.classList.add("flex", "justify-between", "flex-col", "mb-4")
 
                 cartItemElement.innerHTML = `
-                <div style="background-color: blueviole; display: flex; justify-content: space-between;">
+                <div style="background-color: blueviole; display: flex; justify-content: space-between; margin-bottom: -20px;">
 
                     <div style="background-color: re; width: 230px;">
                         <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Nome: ${item.name}</p>
@@ -780,10 +911,11 @@
                         <p style="margin-top: -10px;">R$: ${item.price}</p>
                     </div>
 
-                    <div style="background-color: greenyello; width: 75px; padding-top: 40px;" >
+                    <div style="background-color: greenyello; width: 75px; padding-top: 1px;" >
                         <button data-name="${item.name}" class="remove-from-cart-btn" style="color: white;
                             border-radius: 10px;
-                            padding: 5px;border: none;
+                            padding: 5px;
+                            border: none;
                             background-color: #E62E2E;
                             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
                             font-size: 15px;
