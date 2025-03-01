@@ -1030,29 +1030,23 @@ Preço: R$${item.price}
             }else if(hora<10 && minuto<10){
                 h = `0${hora}:0${minuto}`
             }
-
             //Calcular o frete = (metro(distânci) * 0,01)
-            
-            
-
             // alert(cartItems)
             const n = "5581988830927"
             const m = 
             `Hora: ${h}
 Cliente: ${cliente.value}
 Endereço: ${addressInput.value}
-Frete: R$x
 
 Pedido: 
 ${cartItems}
 Total: R$${p.toFixed(2)}
++ Frete
 Observação: ${obs.value}`
 
             const url = `https://wa.me/${n}?text=${encodeURIComponent(m)}`;
             window.open(url, "_blank")
-            // alert(m)
             let total = 0
-            // calcular o frete e colocar na mensagem, um teste
             cart = []
             updateCartModal();
             addressInput.value = "";
@@ -1060,13 +1054,7 @@ Observação: ${obs.value}`
             cliente.value = "";
             p = 0
             }
-
-            // Enviar o pedido para API ZAP
-            
         })
-
-        
-
 
         // Verificar a hora e manipular o card horário
         function checkRestaurantOpen(){
@@ -1074,7 +1062,6 @@ Observação: ${obs.value}`
             const hora = data.getHours();
             return hora >= 18 && hora < 22;
             // true = restaurante está aberto
-
         }
 
 
