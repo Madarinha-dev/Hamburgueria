@@ -771,7 +771,14 @@
             <!-- Pro de Rildo a gente também vai precisar pegar o endereço e calcular a distância e calcular o frete e jogar no valor total -->
 
             <p style="font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -0.4px;">Endereço de Entrega: </p>
-            <input id="caixa" style="width: 340px; padding: 3px; border-radius: 4px; margin-bottom:10px;" type="text" name="address" id="address" placeholder="Digite o seu Endereço Completo">
+            <input id="caixa" style="width: 340px; padding: 1px; border-radius: 4px; margin-bottom:3px;" type="text" name="address" id="address" placeholder="Digite o seu Endereço Completo">
+
+            <p style="margin-top: 1px;font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -0.4px;">Cliente: </p>
+            <input id="cliente" style="width: 340px; padding: 1px; border-radius: 4px; margin-bottom:3px;" type="text" name="cliente" id="cliente" placeholder="Digite o seu Nome">
+
+            <p style="margin-top: 1px;font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -0.4px;">OBS: </p>
+            <input id="obs" style="width: 340px; padding: 1px; border-radius: 4px; margin-bottom:3px;" type="text" name="obs" id="obs" placeholder="Ex: Os hamburgueres sem....">
+
 
             <p id="address-warn"  style="margin-top: 2px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             color: rgb(221, 5, 5);
@@ -846,6 +853,8 @@
         const addressWarn = document.getElementById('address-warn')
         const funcionamento = document.getElementById('date-span')
         const capa_dia = document.getElementById('capa')
+        const cliente = document.getElementById('cliente')
+        const obs = document.getElementById('obs')
 
         let total = 0;
         let cart = [];
@@ -976,6 +985,8 @@
 
         checkoutBtn.addEventListener('click',function(){
             // alert('Mostrando o que foi Digitado: '+addressInput.value)
+            // alert(`OBS: ${obs.value}`)
+            // alert(`Cliente: ${cliente.value}`)
             if(cart.length === 0){
                 addressInput.style.borderColor = "black";
                 addressWarn.style.display = "none";
@@ -1028,11 +1039,13 @@ Preço: R$${item.price}
             const n = "5581988830927"
             const m = 
             `Hora: ${h}
+Cliente: ${cliente.value}
 Endereço: ${addressInput.value}
 Frete: R$x
 
 Pedido: 
 ${cartItems}
+Observação: ${obs.value}
 Total: R$${p.toFixed(2)}`
 
             const url = `https://wa.me/${n}?text=${encodeURIComponent(m)}`;
@@ -1043,6 +1056,8 @@ Total: R$${p.toFixed(2)}`
             cart = []
             updateCartModal();
             addressInput.value = "";
+            obs.value = "";
+            cliente.value = "";
             p = 0
             }
 
