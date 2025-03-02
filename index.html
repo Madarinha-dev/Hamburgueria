@@ -851,6 +851,76 @@
 
 
 
+    <div id="fund" 
+    style="background-color: rgb(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999999;
+    display: none; 
+    justify-content: center;
+    align-items: center;">
+
+        <div id="pagamento" 
+        style="
+        background-color: white;
+        border-radius: 50px;
+        width: 340px;
+        padding-bottom: 10px;
+        padding-top:10px;
+        padding-left: 10px;
+        padding-right: 10px;">
+
+            <div style="background-color: re; display: fle;">
+                <img style="width: 340px; border-radius: 50px;" src="assets/" alt="">
+            </div>
+
+            <div style="justify-content: center; display: flex; background-color: gree;">
+                <p style="font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Valor da Compra</p>
+            </div>
+
+            <div style="display: flex; justify-content: center; background-color: re; margin-top: -30px;">
+                <p style="font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                color:#33BBAD; font-size: 20px;" id="valor">R$249,90</p>
+            </div>
+
+            <div>
+                <div style="display: flex; justify-content: center;">
+                    <img style="width: 250px;" src="/QRCODE.jpeg" alt="">
+                </div>
+
+                <div>
+                    <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500;">
+                        Copie e Cole: <br>
+                        Chave 01 Pix: fhellypeviniciusdepaula96@gmail.com
+                        Chave 02 Pix: 168.119.494-57 <br>
+                        Nome: Fhellype Vinicius de Paula
+                    </p>
+                </div>
+
+                <div style="display: flex; justify-content: center;">
+                    <button 
+                    style="
+                    border-radius: 10px;
+                    padding: 6px;
+                    background-color:#33BBAD;
+                    color:white;
+                    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                    font-size: 15px;
+                    box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.38);
+                    width: 200px;
+                    margin-bottom: 10px;" onclick="">
+                        Finalizar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
 
 
@@ -1090,7 +1160,7 @@ Observação: ${obs.value}`
 // penso em gerar uma imagem com o QR 
                 const n = "5581988830927"
                 const url = `https://wa.me/${n}?text=${encodeURIComponent(m)}`;
-                window.open(url, "_blank")
+                // window.open(url, "_blank")
                 let total = 0
                 cart = []
                 updateCartModal();
