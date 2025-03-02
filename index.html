@@ -767,10 +767,26 @@
             <h2>Meu Carrinho </h2>
             
             <div id="cart-items" class="itens-do-carrinho"></div>
-            <p style="font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -15px;">Total: R$<span id="cart-total">0.00</span></p>
+            <p style="font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -15px;">Total: R$<span id="cart-total">0.00</span></p><br>
             <!-- Pro de Rildo a gente também vai precisar pegar o endereço e calcular a distância e calcular o frete e jogar no valor total -->
 
-            <p style="font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -0.4px;">Endereço de Entrega: </p>
+            <select 
+            style="
+            border-radius: 10px;
+            padding: 2px;
+            background-color: #E62E2E;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.38);" name="forma-de-pagamento" id="forma-de-pagamento">
+                <option value="vazio">Forma de pagamento</option>
+                <option value="debito">Cartão de Debito (5%)</option>
+                <option value="credito">Cartão de Credito (5%)</option>
+                <option value="pix">Pix</option>
+                <option value="especie">Espécie</option>
+            </select>
+
+
+            <p style="font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -0.4px; margin-top: -1px;">Endereço de Entrega: </p>
             <input id="caixa" style="width: 340px; padding: 1px; border-radius: 4px; margin-bottom:3px;" type="text" name="address" id="address" placeholder="Digite o seu Endereço Completo">
 
             <p style="margin-top: 1px;font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: -0.4px;">Cliente: </p>
@@ -855,6 +871,8 @@
         const capa_dia = document.getElementById('capa')
         const cliente = document.getElementById('cliente')
         const obs = document.getElementById('obs')
+        const forma_de_pagamento = document.getElementById('forma-de-pagamento')
+        // alert(forma_de_pagamento.value)
 
         let total = 0;
         let cart = [];
@@ -993,9 +1011,10 @@
                 return;
             }
 
-            if(addressInput.value === ""){
+            if(addressInput.value === "" || forma_de_pagamento.value === "vazio"){
                 addressWarn.style.display = "flex";
                 addressInput.style.borderColor = "red"
+                alert(`Forma de Pagamento e endereço`)
             }else{
                 addressWarn.style.display = "none";
                 addressInput.style.borderColor = "black";
@@ -1030,29 +1049,97 @@ Preço: R$${item.price}
             }else if(hora<10 && minuto<10){
                 h = `0${hora}:0${minuto}`
             }
-            //Calcular o frete = (metro(distânci) * 0,01)
-            // alert(cartItems)
-            const n = "5581988830927"
-            const m = 
-            `Hora: ${h}
+
+            if (forma_de_pagamento.value === "credito" || forma_de_pagamento.value === "debito"){
+                // alert("Credito ou debito")
+                p = p*1.05
+                // alert(`Valor: ${p*1.05}`)
+                const m =
+                `Hora: ${h}
 Cliente: ${cliente.value}
 Endereço: ${addressInput.value}
 
-Pedido: 
+Pedido:
 ${cartItems}
 Total: R$${p.toFixed(2)}
-+ Frete
+Forma de pagamento: Cartão
 Observação: ${obs.value}`
+                const n = "5581988830927"
+                const url = `https://wa.me/${n}?text=${encodeURIComponent(m)}`;
+                window.open(url, "_blank")
+                let total = 0
+                cart = []
+                updateCartModal();
+                addressInput.value = "";
+                obs.value = "";
+                cliente.value = "";
+                p = 0
+            }else if(forma_de_pagamento.value === "pix") {
+                // alert('PIX')
+                const m = 
+                `Hora: ${h}
+Cliente: ${cliente.value}
+Endereço: ${addressInput.value}
+                
+Pedido:
+${cartItems}
+Total: R$${p.toFixed(2)}
+Forma de pagamento: PIX
+Chave: 16811949457 (Fhellype Vinicius)
+Observação: ${obs.value}`
+// penso em gerar uma imagem com o QR 
+                const n = "5581988830927"
+                const url = `https://wa.me/${n}?text=${encodeURIComponent(m)}`;
+                window.open(url, "_blank")
+                let total = 0
+                cart = []
+                updateCartModal();
+                addressInput.value = "";
+                obs.value = "";
+                cliente.value = "";
+                p = 0
+            }else if(forma_de_pagamento.value === "especie"){
+                const m = 
+                `Hora: ${h}
+Cliente: ${cliente.value}
+Endereço: ${addressInput.value}
+                
+Pedido:
+${cartItems}
+Total: R$${p.toFixed(2)}
+Forma de pagamento: ESPÉCIE
+Observação: ${obs.value}`
+                const n = "5581988830927"
+                const url = `https://wa.me/${n}?text=${encodeURIComponent(m)}`;
+                window.open(url, "_blank")
+                let total = 0
+                cart = []
+                updateCartModal();
+                addressInput.value = "";
+                obs.value = "";
+                cliente.value = "";
+                p = 0
+            }
 
-            const url = `https://wa.me/${n}?text=${encodeURIComponent(m)}`;
-            window.open(url, "_blank")
-            let total = 0
-            cart = []
-            updateCartModal();
-            addressInput.value = "";
-            obs.value = "";
-            cliente.value = "";
-            p = 0
+            // const m = 
+            // `Hora: ${h}
+// Cliente: ${cliente.value}
+// Endereço: ${addressInput.value}
+
+// Pedido: 
+// ${cartItems}
+// Total: R$${p.toFixed(2)}
+// Observação: ${obs.value}`
+
+            // const url = `https://wa.me/${n}?text=${encodeURIComponent(m)}`;
+            // window.open(url, "_blank")
+            // let total = 0
+            // cart = []
+            // updateCartModal();
+            // addressInput.value = "";
+            // obs.value = "";
+            // cliente.value = "";
+            // p = 0
             }
         })
 
